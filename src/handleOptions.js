@@ -90,24 +90,28 @@ exports.handleExtendsWithGithub = () => {
   const extend = core.getInput(inputs.extends);
   core.debug(`extend input raw:\n${extend}`);
 
-  if (extend) {
-    const extendModuleNames = extend
-      .split(/\r?\n/)
-      .map((name) => name.trim())
-      .filter(Boolean)
-      .map(
-        (name) =>
-          name
-            .replace(/^github:/, "") // Remove "github:" prefix
-            .replace(/(?<!^)@.+/, ""), // Remove "@version", preserving @scope
-      );
-
-    return {
-      extends: extendModuleNames,
-    };
-  } else {
+  if (!extend) {
     return {};
   }
+
+  //   ^\s*                                   trim leading space
+  //   (?:github:|gitlab:)?                   optional "github:" or "gitlab:"
+  //   (@?[^\/\s]+\/[^\/\s]+)                 capture "@?owner/repo"
+  //   (?:[#@].*)?                            drop anything from "#" or "@" to end
+  //   \s*$                                   trim trailing space
+  const RE = /^\s*(?:github:|gitlab:)?(@?[^\/\s]+\/[^\/\s]+)(?:[#@].*)?\s*$/;
+
+  const extendModuleNames = extend
+    .split(/\r?\n/)
+    .map((line) => {
+      const m = line.trim().match(RE);
+      return m ? m[1] : null;
+    })
+    .filter(Boolean);
+
+  return {
+    extends: extendModuleNames,
+  };
 };
 
 /**
