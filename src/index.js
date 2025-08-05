@@ -1,18 +1,18 @@
-const core = require('@actions/core');
+const core = require("@actions/core");
 const {
   handleBranchesOption,
   handleDryRunOption,
   handleCiOption,
-  handleExtends,
+  handleExtendsWithGithub,
   handleTagFormat,
   handleRepositoryUrlOption,
-} = require('./handleOptions');
-const setUpJob = require('./setUpJob.task');
-const installSpecifyingVersionSemantic = require('./installSpecifyingVersionSemantic.task');
-const preInstall = require('./preInstall.task');
-const cleanupNpmrc = require('./cleanupNpmrc.task');
-const windUpJob = require('./windUpJob.task');
-const inputs = require('./inputs.json');
+} = require("./handleOptions");
+const setUpJob = require("./setUpJob.task");
+const installSpecifyingVersionSemantic = require("./installSpecifyingVersionSemantic.task");
+const preInstall = require("./preInstall.task");
+const cleanupNpmrc = require("./cleanupNpmrc.task");
+const windUpJob = require("./windUpJob.task");
+const inputs = require("./inputs.json");
 
 /**
  * Release main task
@@ -27,19 +27,19 @@ const release = async () => {
   await preInstall(core.getInput(inputs.extra_plugins));
   await preInstall(core.getInput(inputs.extends));
 
-  if (core.getInput(inputs.unset_gha_env) === 'true') {
-    core.debug('Unset GITHUB_ACTIONS environment variable');
+  if (core.getInput(inputs.unset_gha_env) === "true") {
+    core.debug("Unset GITHUB_ACTIONS environment variable");
     delete process.env.GITHUB_ACTIONS;
   }
 
-  const semanticRelease = await import('semantic-release');
+  const semanticRelease = await import("semantic-release");
   const result = await semanticRelease.default({
     ...handleBranchesOption(),
     ...handleDryRunOption(),
     ...handleCiOption(),
-    ...handleExtends(),
+    ...handleExtendsWithGithub(),
     ...handleTagFormat(),
-    ...handleRepositoryUrlOption()
+    ...handleRepositoryUrlOption(),
   });
 
   await cleanupNpmrc();
@@ -47,6 +47,6 @@ const release = async () => {
 };
 
 module.exports = () => {
-  core.debug('Initialization successful');
+  core.debug("Initialization successful");
   release().catch(core.setFailed);
 };

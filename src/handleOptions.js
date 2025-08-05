@@ -1,6 +1,7 @@
-const core = require('@actions/core');
-const stringToJson = require('@cycjimmy/awesome-js-funcs/cjs/typeConversion/stringToJson.cjs').default;
-const inputs = require('./inputs.json');
+const core = require("@actions/core");
+const stringToJson =
+  require("@cycjimmy/awesome-js-funcs/cjs/typeConversion/stringToJson.cjs").default;
+const inputs = require("./inputs.json");
 
 /**
  * Handle Branches Option
@@ -14,8 +15,8 @@ exports.handleBranchesOption = () => {
   core.debug(`branches input: ${branches}`);
   core.debug(`branch input: ${branch}`);
 
-  const semanticVersion = require('semantic-release/package.json').version;
-  const semanticMajorVersion = Number(semanticVersion.replace(/\..+/g, ''));
+  const semanticVersion = require("semantic-release/package.json").version;
+  const semanticMajorVersion = Number(semanticVersion.replace(/\..+/g, ""));
   core.debug(`semanticMajorVersion: ${semanticMajorVersion}`);
 
   // older than v16
@@ -29,13 +30,13 @@ exports.handleBranchesOption = () => {
   }
 
   // above v16
-  const strNeedConvertToJson = branches || branch || '';
+  const strNeedConvertToJson = branches || branch || "";
 
   if (!strNeedConvertToJson) {
     return branchesOption;
   }
 
-  const jsonOrStr = stringToJson('' + strNeedConvertToJson);
+  const jsonOrStr = stringToJson("" + strNeedConvertToJson);
   core.debug(`Converted branches attribute: ${JSON.stringify(jsonOrStr)}`);
   branchesOption.branches = jsonOrStr;
   return branchesOption;
@@ -50,11 +51,11 @@ exports.handleDryRunOption = () => {
   core.debug(`dryRun input: ${dryRun}`);
 
   switch (dryRun) {
-    case 'true':
-      return {dryRun: true};
+    case "true":
+      return { dryRun: true };
 
-    case 'false':
-      return {dryRun: false};
+    case "false":
+      return { dryRun: false };
 
     default:
       return {};
@@ -70,14 +71,42 @@ exports.handleCiOption = () => {
   core.debug(`ci input: ${ci}`);
 
   switch (ci) {
-    case 'true':
+    case "true":
       return { ci: true, noCi: false };
 
-    case 'false':
+    case "false":
       return { ci: false, noCi: true };
 
     default:
       return {};
+  }
+};
+
+/**
+ * Handle Extends Option
+ * @returns {{}|{extends: Array}|{extends: String}}
+ */
+exports.handleExtendsWithGithub = () => {
+  const extend = core.getInput(inputs.extends);
+  core.debug(`extend input raw:\n${extend}`);
+
+  if (extend) {
+    const extendModuleNames = extend
+      .split(/\r?\n/)
+      .map((name) => name.trim())
+      .filter(Boolean)
+      .map(
+        (name) =>
+          name
+            .replace(/^github:/, "") // Remove "github:" prefix
+            .replace(/(?<!^)@.+/, ""), // Remove "@version", preserving @scope
+      );
+
+    return {
+      extends: extendModuleNames,
+    };
+  } else {
+    return {};
   }
 };
 
@@ -90,10 +119,11 @@ exports.handleExtends = () => {
   core.debug(`extend input: ${extend}`);
 
   if (extend) {
-    const extendModuleNames = extend.split(/\r?\n/)
-      .map((name) => name.replace(/(?<!^)@.+/, ''))
+    const extendModuleNames = extend
+      .split(/\r?\n/)
+      .map((name) => name.replace(/(?<!^)@.+/, ""));
     return {
-      extends: extendModuleNames
+      extends: extendModuleNames,
     };
   } else {
     return {};
@@ -110,7 +140,7 @@ exports.handleTagFormat = () => {
 
   if (tagFormat) {
     return {
-      tagFormat
+      tagFormat,
     };
   } else {
     return {};
