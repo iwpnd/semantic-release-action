@@ -94,12 +94,16 @@ exports.handleExtendsWithGithub = () => {
     return {};
   }
 
-  //   ^\s*                                   trim leading space
-  //   (?:github:|gitlab:)?                   optional "github:" or "gitlab:"
-  //   (@?[^\/\s]+\/[^\/\s]+)                 capture "@?owner/repo"
-  //   (?:[#@].*)?                            drop anything from "#" or "@" to end
-  //   \s*$                                   trim trailing space
-  const RE = /^\s*(?:github:|gitlab:)?(@?[^\/\s]+\/[^\/\s]+)(?:[#@].*)?\s*$/;
+  //   ^\s*                             trim leading space
+  //   (?:github:|gitlab:)?             optional "github:" or "gitlab:"
+  //   (@?[^\/\s#@]+(?:\/[^\/\s#@]+)?)  capture either:
+  //                                      - "@?owner/repo"
+  //                                      - or single "repo"
+  //                                      (no #, @, slash in each segment)
+  //   (?:[@#].*)?                      drop anything from the first @ or # to end
+  //   \s*$                             trim trailing space
+  const RE =
+    /^\s*(?:github:|gitlab:)?(@?[^\/\s#@]+(?:\/[^\/\s#@]+)?)(?:[@#].*)?\s*$/;
 
   const extendModuleNames = extend
     .split(/\r?\n/)
@@ -108,6 +112,8 @@ exports.handleExtendsWithGithub = () => {
       return m ? m[1] : null;
     })
     .filter(Boolean);
+
+  core.debug(`extendModuleNames processed:\n${extendModuleNames}`);
 
   return {
     extends: extendModuleNames,
