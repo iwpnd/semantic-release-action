@@ -1,6 +1,6 @@
 {
-  "name": "@cycjimmy/semantic-release-action",
-  "version": "4.2.2",
+  "name": "@iwpnd/semantic-release-action",
+  "version": "1.0.1",
   "description": "GitHub Action for Semantic Release",
   "main": "index.js",
   "scripts": {
@@ -8,16 +8,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cycjimmy/semantic-release-action.git"
+    "url": "git+https://github.com/iwpnd/semantic-release-action.git"
   },
   "keywords": [
     "semantic-release",
     "action"
   ],
-  "author": "cycjimmy <cycjimmy@gmail.com> (https://github.com/cycjimmy)",
+  "author": "iwpnd <iwpnd@posteo.de> (https://github.com/iwpnd)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/cycjimmy/semantic-release-action/issues"
+    "url": "https://github.com/iwpnd/semantic-release-action/issues"
   },
   "homepage": "https://github.com/cycjimmy/semantic-release-action#readme",
   "dependencies": {
