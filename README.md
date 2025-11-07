@@ -270,13 +270,35 @@ Configure your `package.json`:
 
 See [CHANGELOG](CHANGELOG.md).
 
-## Acknowledgments
+## Contributing
 
-This project is a TypeScript refactor and enhancement of [cycjimmy/semantic-release-action](https://github.com/cycjimmy/semantic-release-action). Special thanks to [@cycjimmy](https://github.com/cycjimmy) for the original implementation and ongoing maintenance of the upstream project.
+Contributions are neither expected nor encouraged. If you for whatever
+reason you want to contribute here, create an issue describing your problem first.
+Unsolicited PRs are going to be deleted straight up.
+
+If we evaluated that you're in the right repository,
+are of a clear state of mind and have cause to do what you wanna do, please
+follow the steps below.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feat/my-amazing-feature`)
+3. Commit your Changes (`git commit -m 'feat: some amazing feature'`)
+4. Push to the Branch (`git push origin feat/my-amazing-feature`)
+5. Open a Pull Request
 
 ## License
 
-This project is released under the [MIT License](LICENSE).
+Distributed under the MIT License. See `LICENSE.txt` for more information.
+
+## Contact
+
+Benjamin Ramser - [@iwpnd](https://github.com/iwpnd) - iwpnd@posteo.com
+
+Project Link: [https://github.com/iwpnd/semantic-release-action](https://github.com/iwpnd/semantic-release-action)
+
+## Acknowledgments
+
+This project is a TypeScript refactor and enhancement of [cycjimmy/semantic-release-action](https://github.com/cycjimmy/semantic-release-action). Special thanks to [@cycjimmy](https://github.com/cycjimmy) for the original implementation and ongoing maintenance of the upstream project.
 
 <!-- Links -->
 [version-image]: https://img.shields.io/github/package-json/v/iwpnd/semantic-release-action
