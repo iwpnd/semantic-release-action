@@ -28,6 +28,7 @@
     "postinstall": "yarn husky init",
     "prepublishOnly": "pinst --disable && yarn run build",
     "postpublish": "pinst --enable",
+    "build": "find ./src -name '*.ts' -exec esbuild '{}' --bundle --outbase=src --outdir=dist --format=esm --platform=node \\;",
     "build:watch": "tsc --watch",
     "package": "yarn lint && yarn test && node esbuild.config.mjs",
     "clean": "rimraf {dist,tsconfig.tsbuildinfo,yarn-error.log,coverage}",
