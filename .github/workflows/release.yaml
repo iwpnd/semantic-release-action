@@ -1,4 +1,4 @@
-name: Release
+name: release
 
 on:
   push:
@@ -15,12 +15,12 @@ jobs:
     name: release
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: checkout
         uses: actions/checkout@v4
 
-      - name: Semantic Release
+      - name: release
         uses: ./
-        id: semantic
+        id: release
         with:
           dry_run: true
           extra_plugins: |
