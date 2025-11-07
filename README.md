@@ -2,7 +2,7 @@
 <div align="center">
   <h3 align="center">semantic release action</h3>
   <p align="center">
- A TypeScript-based GitHub Action for [Semantic Release](https://github.com/semantic-release/semantic-release) with enhanced support for shareable configurations.
+ A TypeScript-based GitHub Action for <a href="https://github.com/semantic-release/semantic-release">semantic-release</a> with enhanced support for shareable configurations.
     <br />
     <a href="https://github.com/strava/hf2/issues">Report Bug</a>
     ·
