@@ -1,0 +1,5 @@
+.editorconfig
+.github
+yarn.lock
+yarn-error.log
+*.config.js
