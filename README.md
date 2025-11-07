@@ -171,7 +171,7 @@ Use existing [shareable configurations](https://semantic-release.gitbook.io/sema
 ### Dry Run Mode
 ```yaml
 - name: Semantic Release
-  uses: iwpnd/semantic-release-action@v4
+  uses: iwpnd/semantic-release-action@v1
   with:
     dry_run: true
   env:
@@ -184,7 +184,7 @@ Use existing [shareable configurations](https://semantic-release.gitbook.io/sema
 Useful for generating release versions in pull requests:
 ```yaml
 - name: Semantic Release
-  uses: iwpnd/semantic-release-action@v4
+  uses: iwpnd/semantic-release-action@v1
   with:
     ci: false
   env:
@@ -195,7 +195,7 @@ Useful for generating release versions in pull requests:
 ### Custom Working Directory
 ```yaml
 - name: Semantic Release
-  uses: iwpnd/semantic-release-action@v4
+  uses: iwpnd/semantic-release-action@v1
   with:
     working_directory: ./packages/my-package
   env:
@@ -206,7 +206,7 @@ Useful for generating release versions in pull requests:
 ### Custom Tag Format (Monorepos)
 ```yaml
 - name: Semantic Release
-  uses: iwpnd/semantic-release-action@v4
+  uses: iwpnd/semantic-release-action@v1
   with:
     tag_format: my-package-v${version}
   env:
@@ -228,7 +228,7 @@ Useful for generating release versions in pull requests:
       --message "${{ github.event.pull_request.title }}"
       
 - name: Semantic Release
-  uses: iwpnd/semantic-release-action@v4
+  uses: iwpnd/semantic-release-action@v1
   with:
     unset_gha_env: ${{ github.event_name == 'pull_request' }}
     ci: ${{ github.event_name == 'pull_request' && false || '' }}
@@ -241,7 +241,7 @@ Useful for generating release versions in pull requests:
 ```yaml
 - name: Semantic Release
   id: semantic
-  uses: iwpnd/semantic-release-action@v4
+  uses: iwpnd/semantic-release-action@v1
   env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
