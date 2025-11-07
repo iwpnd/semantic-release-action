@@ -268,7 +268,7 @@ Configure your `package.json`:
 
 ## Changelog
 
-See [CHANGELOG](docs/CHANGELOG.md).
+See [CHANGELOG](CHANGELOG.md).
 
 ## Acknowledgments
 
