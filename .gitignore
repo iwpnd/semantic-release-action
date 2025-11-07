@@ -1,12 +1,7 @@
 node_modules/
 npm-debug.log
-<<<<<<< Updated upstream
-coverage
-||||||| Stash base
-=======
 coverage
 package-lock.json
->>>>>>> Stashed changes
 
 .yarn/cache/*
 .yarn/install-state.gz
