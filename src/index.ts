@@ -1,9 +1,21 @@
 import * as core from '@actions/core'
-import * as semantic from 'semantic-release'
 
 import { inputs } from './inputs.js'
-import { handleBranchesOption, handleCIOption, handleDryRunOption, handleExtends, handleRepositoryURLOption, handleTagFormat } from "./options.js"
-import { cleanupTask, installSemanticReleaseTask, installTask, outputTask, setupTask } from './tasks.js'
+import {
+    handleBranchesOption,
+    handleCIOption,
+    handleDryRunOption,
+    handleExtends,
+    handleRepositoryURLOption,
+    handleTagFormat
+} from "./options.js"
+import {
+    cleanupTask,
+    installSemanticReleaseTask,
+    installTask,
+    outputTask,
+    setupTask
+} from './tasks.js'
 
 async function release() {
     core.debug("initializing semantic-release action")
@@ -22,6 +34,7 @@ async function release() {
         delete process.env.GITHUB_ACTIONS
     }
 
+    const semantic = await import('semantic-release')
     const result = await semantic.default({
         ...handleBranchesOption(),
         ...handleDryRunOption(),
