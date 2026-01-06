@@ -1,4 +1,4 @@
-name: "semantic versionioning release action"
+name: "semantic versioning release action"
 description: "GitHub action wrapping semantic-release with a focus on shareable configuration files"
 author: "iwpnd"
 branding:
