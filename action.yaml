@@ -1,5 +1,5 @@
-name: "Action For Semantic Release"
-description: "GitHub Action for Semantic Release"
+name: "semantic-release-action"
+description: "GitHub action wrapping semantic-release with a focus on shareable configuration files"
 author: "iwpnd"
 branding:
   icon: "package"
