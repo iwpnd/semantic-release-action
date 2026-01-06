@@ -10,9 +10,6 @@
   </p>
 </div>
 
-> [!IMPORTANT]
-> Not ready for production use just yet.
-
 ## About
 
 This action is a TypeScript refactor of [cycjimmy/semantic-release-action](https://github.com/cycjimmy/semantic-release-action), created to provide broader usability for shareable configurations. The key enhancement allows installation of shareable configurations directly from GitHub repositories using npm's GitHub syntax (e.g., `github:owner/repo`), enabling teams to maintain private or organization-specific semantic-release configurations without publishing to npm.
