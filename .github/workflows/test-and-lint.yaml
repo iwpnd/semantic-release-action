@@ -68,8 +68,8 @@ jobs:
             @semantic-release/github
             @semantic-release/release-notes-generator
             conventional-changelog-conventionalcommits
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # env:
+        #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: test output
         id: test-output
