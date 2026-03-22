@@ -22,7 +22,7 @@
   "contributors": [],
   "license": "MIT",
   "engines": {
-    "node": ">=20.x"
+    "node": ">=24.x"
   },
   "scripts": {
     "postinstall": "yarn husky init",
