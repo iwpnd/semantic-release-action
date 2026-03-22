@@ -93,8 +93,8 @@ jobs:
       - name: tag and release
         id: tag-and-release
         uses: ./
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # this will maintain @v1 tag with the latest minor and patch updates
       # so consumers of the any of our actions can use the generic @v1 tag
