@@ -48,7 +48,7 @@
     "@semantic-release/npm": "13.1.1",
     "@semantic-release/release-notes-generator": "14.1.0",
     "conventional-changelog-conventionalcommits": "9.1.0",
-    "semantic-release": "^25.0.1"
+    "semantic-release": "^25.0.2"
   },
   "devDependencies": {
     "@commitlint/cli": "20.1.0",
